@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import Header from './Components/Header'
 import './App.css';
+import Headlines from './Components/Headlines';
+import TellUs from './Components/TellUs';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from './Components/Home';
+import ThemeContext from './Components/ThemeContext';
+
+
 
 function App() {
+
+  co
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider>
+      <Router>  
+      <div className="App">
+        <Header/>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route exact path="/headlines" component={Headlines}/>
+            <Route exact path="/tellus" component={TellUs}/>
+          </Switch>
+      </div>
+    </Router>
+    </Context.Provider>
   );
 }
+
+
 
 export default App;
