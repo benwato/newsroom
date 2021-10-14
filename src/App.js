@@ -1,23 +1,37 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Header from './Components/Header'
 import './App.css';
 import Headlines from './Components/Headlines';
 import TellUs from './Components/TellUs';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Components/Home';
-import ThemeContext from './Components/ThemeContext';
+import {Context} from './Components/Context';
 
 
 
 function App() {
 
-  co
+
+
+const [theme, setTheme] = useState(false)
+
+
+
+const themeStyles = {
+  backgroundColor: theme ? '#333' : '#CCC',
+  color: theme ? '#CCC' : '#333',
+  padding: '2rem',
+  margin: '2rem'
+}
+
+
 
   return (
-    <Context.Provider>
+    <>
+    <Context.Provider value = {{theme, setTheme}}>
       <Router>  
-      <div className="App">
+      <div style = {themeStyles} className="App">
         <Header/>
           <Switch>
             <Route exact path='/' component={Home}/>
@@ -27,6 +41,7 @@ function App() {
       </div>
     </Router>
     </Context.Provider>
+    </>
   );
 }
 

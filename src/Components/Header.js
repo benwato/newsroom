@@ -2,9 +2,18 @@ import React from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
+import {useContext} from 'react'
+import {Context} from './Context'
 import { ThemeButton } from './ThemeButton'
 
 const Header = () => {
+  
+  const {theme, setTheme} = useContext(Context)
+  function handleClick() {
+    
+    setTheme(prev => !prev)
+}
+
     return (
         <div>
             <div>
@@ -17,11 +26,12 @@ const Header = () => {
             <Nav.Link href="/tellus">Tell Us</Nav.Link>
           </Nav>
         </Container>
-        <ThemeButton/>
+        <button onClick = {handleClick}>Theme</button>
       </Navbar>
     </div>
         </div>
     )
 }
+
 
 export default Header
